@@ -2,7 +2,7 @@
   <div class="grid border2">
     <div class="grid__table maxW_1024">
       <form id="search">
-        <input name="query" v-model="searchQuery" placeholder="Search by Name or Study">
+        <input name="query" v-model="searchQuery" placeholder="Search">
       </form>
       <table class="table table-hover">
         <thead>
@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="" v-for="data in sortedGridData" :key="data.id.value">
+          <tr class="" v-for="data in filteredList" :key="data.id.value">
             <td scope="row"><p>{{data.name.first | capitalize}}</p> <p>{{data.name.last | capitalize}}</p></td>
             <td>{{data.gender | capitalize}}</td>
             <td>{{data.dob | date}}</td>
@@ -34,7 +34,12 @@
 </template>
 
 <script>
-import { filterObj, filterDOB, capitalizeStr } from "../../utils/helpers.js";
+import {
+  filterObj,
+  filterDOB,
+  capitalizeStr,
+  flatten
+} from "../../utils/helpers.js";
 export default {
   name: "Grid",
   data() {
@@ -52,16 +57,32 @@ export default {
     this.init();
   },
   computed: {
-    sortedGridData() {
-      return this.colData.slice().sort((a, b) => {
-        let count;
-        this.currentSortDir === "asc" ? (count = 1) : (count = -1);
-        if (this.currentSort === "city") this.currentSort = "location";
-        if (this.currentSort === "state") this.currentSort = "location";
-        a = a[this.currentSort];
-        b = b[this.currentSort];
-        return (a === b ? 0 : a > b ? 1 : -1) * count;
-      });
+    filteredList() {
+      let searchWord = this.searchQuery && this.searchQuery.toLowerCase();
+      if (searchWord) {
+        return this.colData.filter(data => {
+          data["city"] = data.location.city;
+          data["state"] = data.location.state;
+          data["first"] = data.location.first;
+          data["last"] = data.location.last;
+          return Object.keys(data).some(key => {
+            let keyValue = String(data[key]);
+            return keyValue.toLowerCase().includes(searchWord);
+          });
+        });
+      }
+      if (this.currentSort) {
+        return this.colData.slice().sort((a, b) => {
+          let count;
+          this.currentSortDir === "asc" ? (count = 1) : (count = -1);
+          if (this.currentSort === "city") this.currentSort = "location";
+          if (this.currentSort === "state") this.currentSort = "location";
+          a = a[this.currentSort];
+          b = b[this.currentSort];
+          return (a === b ? 0 : a > b ? 1 : -1) * count;
+        });
+      }
+      return this.colData;
     }
   },
   filters: {
