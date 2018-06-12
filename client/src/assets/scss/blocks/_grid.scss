@@ -15,6 +15,10 @@
       overflow: scroll;
     }
     form {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
       height: 50px;
       input {
         height: 100%;

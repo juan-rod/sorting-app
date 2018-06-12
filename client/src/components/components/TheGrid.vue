@@ -3,6 +3,9 @@
     <div class="grid__table maxW_1024">
       <form id="search">
         <input name="query" v-model="searchQuery" placeholder="Search">
+        <div class="query-count">
+          <p>{{filteredList.length}} / {{gridTotal}}</p>
+        </div>
       </form>
       <table class="table table-hover">
         <thead>
@@ -45,12 +48,11 @@ export default {
   data() {
     return {
       columnKeys: ["name", "gender", "dob", "city", "state", "phone", "email"],
-      sortKey: "",
-      sort: {},
       colData: [],
       currentSort: "",
       currentSortDir: "asc",
-      searchQuery: ""
+      searchQuery: "",
+      gridTotal: ""
     };
   },
   mounted() {
@@ -100,6 +102,7 @@ export default {
           console.log("oops");
         } else {
           this.colData = this.gridData.results;
+          this.gridTotal = this.colData.length;
         }
       });
     },
