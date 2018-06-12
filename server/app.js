@@ -1,5 +1,7 @@
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
@@ -22,6 +24,10 @@ mongoose
   .catch(err => console.log(err));
 
 const app = express();
+
+// Body Parser Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send("I'm the sorting app!");
