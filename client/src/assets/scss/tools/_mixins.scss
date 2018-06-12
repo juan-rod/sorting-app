@@ -1,0 +1,55 @@
+@mixin fluid-type(
+  $min-font-size: 12px,
+  $max-font-size: 21px,
+  $lower-range: 420px,
+  $upper-range: 1024px
+) {
+  font-size: calc(
+    #{$min-font-size} + #{(
+        ($max-font-size / ($max-font-size * 0 + 1)) -
+          ($min-font-size / ($min-font-size * 0 + 1))
+      )} * ((100vw - #{$lower-range}) / #{(
+            ($upper-range / ($upper-range * 0 + 1)) -
+              ($lower-range / ($lower-range * 0 + 1))
+          )})
+  );
+
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+  @media screen and (min-width: $upper-range) {
+    font-size: $max-font-size;
+  }
+}
+@mixin flexCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin navigation {
+  width: 100%;
+  position: fixed;
+  height: 4em;
+}
+@mixin navLinks {
+  ul {
+    @include flexCenter;
+  }
+  li p {
+    @include fluid-type(12px, 16px);
+  }
+  ul li a {
+    text-decoration: none;
+  }
+  li a.active {
+    color: cc(bg);
+    border-bottom: 2px solid cc(secondary);
+    font-weight: 700;
+  }
+  li a:hover {
+    cursor: pointer;
+    color: cc(secondary);
+    border-bottom: 2px solid cc(secondary);
+  }
+}

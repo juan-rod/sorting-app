@@ -1,0 +1,14 @@
+.navbar {
+  @include navigation;
+  @include flexCenter;
+  &__content {
+    @include navLinks;
+    @include flexCenter;
+    height: 100%;
+    ul {
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}

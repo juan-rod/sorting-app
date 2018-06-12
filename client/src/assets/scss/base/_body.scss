@@ -1,0 +1,41 @@
+body {
+  @extend %txt--body;
+  color: cc(txt);
+  background-color: cc(bg);
+  font-size: 16px;
+  // @include circuitPattern;
+  .maxW_1024 {
+    max-width: 1024px;
+    width: 100%;
+  }
+  h1 {
+    @include fluid-type(42px, 64px);
+  }
+  h2 {
+    @include fluid-type(24px, 32px);
+  }
+  h3 {
+    @include fluid-type(22px, 26px);
+  }
+  p {
+    @include fluid-type(16px, 20px);
+  }
+  .mainView {
+    // @include flexCenter;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .border {
+    border: 1px solid red;
+  }
+  .border2 {
+    border: 2px dotted blue;
+  }
+  .border3 {
+    border: 1px solid pink;
+  }
+  .border4 {
+    border: 1px solid black;
+  }
+}

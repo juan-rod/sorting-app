@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700");
+
+// font stack
+@mixin font-stack($ff, $weight: normal) {
+  font-family: #{$ff}, Helvetica, Arial, monospace;
+  font-weight: $weight;
+}
+
+// font families
+%ff--400 {
+  @include font-stack("Roboto Mono", 400);
+}
+%ff--500 {
+  @include font-stack("Roboto Mono", 500);
+}
+%ff--700 {
+  @include font-stack("Roboto Mono", 700);
+}
+
+// extend placeholders
+%txt--body {
+  @extend %ff--400;
+}
+%txt--title {
+  @extend %ff--700;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+%txt--subtitle {
+  @extend %ff--500;
+  line-height: 1.5;
+}
