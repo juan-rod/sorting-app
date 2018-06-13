@@ -53,3 +53,15 @@
     border-bottom: 2px solid cc(secondary);
   }
 }
+@mixin popupShadow {
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
+    0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+@mixin boxShadow {
+  box-shadow: 5px 5px 6px 0 rgba(50, 50, 93, 0.1),
+    5px 4px 5px 0 rgba(0, 0, 0, 0.07);
+}
+@mixin boxShadowInset {
+  box-shadow: inset 3px 3px 3px 0 rgba(50, 50, 93, 0.1),
+    inset 0px -3px 11px 0px rgba(0, 0, 0, 0.07);
+}

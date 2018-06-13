@@ -1,19 +1,22 @@
 <template>
-  <div class="navbar border">
-    <div class="navbar__content maxW_1024 border2">
-      <ul>
-        <li>
-          <h3>Test Table</h3>
-        </li>
-        <li><p>Profile</p></li>
-      </ul>
+  <div class="navbar">
+    <div class="navbar__content maxW_1024">
+      <h3 :style="fadeIn">Lunar Collective</h3>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  computed: {
+    fadeIn() {
+      return {
+        animation: "fade-in 3s",
+        "animation-iteration-count": "1"
+      };
+    }
+  }
 };
 </script>
 

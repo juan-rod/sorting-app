@@ -10,7 +10,10 @@ router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
-    res.redirect("/home");
+    console.log("hey");
+    req.session.token = req.user.token;
+    res.redirect("/");
+    // res.redirect("/home");
   }
 );
 
@@ -24,6 +27,7 @@ router.get("/verify", (req, res) => {
 });
 router.get("/logout", (req, res) => {
   req.logout();
+  req.session = null;
   res.redirect("/");
 });
 module.exports = router;

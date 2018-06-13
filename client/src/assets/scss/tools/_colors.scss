@@ -5,11 +5,11 @@ $light-gray-blue: #dae4eb;
 $dark-gray-blue: #58585b;
 $smoky-black: #4c4e4d;
 $ms-dark-blue: #003399;
-$ms-light-blue: #33ccff;
+$millenial-pink: #ff9e99;
 $ms-border-blue: #73abec;
-$ms-success: #41e1b5;
-$ms-warning: #ffb94a;
-$ms-error: #ff806f;
+$success: #41e1b5;
+$warning: #ffb94a;
+$error: #ff806f;
 
 // cc map
 $colors: (
@@ -17,16 +17,16 @@ $colors: (
     bg: $ghost-white,
     txt: $smoky-black,
     primary: $ms-dark-blue,
-    secondary: $ms-light-blue,
+    secondary: $millenial-pink,
     border: $light-gray-blue,
     card: $ms-border-blue,
     shadow: $smoky-black,
     overlay: $dark-gray-blue,
     selection: rgba($dark-gray-blue, 0.33),
     btn: $ms-border-blue,
-    success: $ms-success,
-    warning: $ms-warning,
-    error: $ms-error
+    success: $success,
+    warning: $warning,
+    error: $error
   ),
   alt: (
     txt: $dark-gray-blue,

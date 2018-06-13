@@ -1,31 +1,51 @@
 .grid {
   @include flexCenter;
   margin-top: 4em;
-  &__table {
-    height: 100%;
-    table thead {
-      tr {
-        width: 100%;
-        display: inline-table;
-      }
-    }
-    table tbody {
-      display: block;
-      max-height: 500px;
-      overflow: scroll;
-    }
-    form {
-      display: flex;
+  z-index: 2;
+  form {
+    @include flexCenter;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 2em;
+    border-bottom: 1px solid cc(secondary, 0.4);
+    position: relative;
+    background-color: cc(bg);
+    .search-bar {
+      @include flexCenter;
       flex-direction: row;
-      justify-content: space-between;
-
-      height: 50px;
+      justify-content: flex-start;
+      i {
+        opacity: 0.6;
+      }
       input {
         height: 100%;
-        width: 50%;
-        border: 1px solid pink;
+        width: 100%;
+        padding-left: 0.5em;
+        @include fluid-type(20px, 24px);
       }
     }
+  }
+  &__table {
+    height: 100%;
+    @include boxShadow;
+    overflow: scroll;
+    table {
+      table-layout: fixed;
+      width: 100%;
+      thead {
+        width: 100%;
+      }
+      td {
+        vertical-align: middle;
+      }
+      tbody {
+        max-height: 500px;
+        overflow: scroll;
+      }
+    }
+
     .arrow {
       display: inline-block;
       vertical-align: middle;
@@ -38,13 +58,13 @@
     .arrow.asc {
       border-left: 4px solid transparent;
       border-right: 4px solid transparent;
-      border-top: 4px solid #777;
+      border-top: 4px solid cc(txt, 0.8);
     }
 
     .arrow.dsc {
       border-left: 4px solid transparent;
       border-right: 4px solid transparent;
-      border-bottom: 4px solid #777;
+      border-bottom: 4px solid cc(txt, 0.8);
     }
   }
 }

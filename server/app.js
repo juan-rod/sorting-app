@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
+const cors = require("cors");
+const morgan = require("morgan");
 
 //load user model
 require("./models/User");
@@ -25,12 +27,19 @@ mongoose
 
 const app = express();
 
+//morgan middleware
+app.use(morgan("combined"));
 // Body Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.set("view engine", "html");
+
+//cors
+app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("I'm the sorting app!");
+  res.render("http://localhost:8080/home");
+  // res.send("I'm the sorting app!");
 });
 
 app.use(cookieParser());

@@ -1,13 +1,16 @@
 <template>
-  <div class="grid border2">
-    <div class="grid__table maxW_1024">
-      <form id="search">
+  <div class="grid">
+    <form id="search" class="maxW_1024">
+      <div class="search-bar">
+        <i class="fa fa-lg fa-search"></i>
         <input name="query" v-model="searchQuery" placeholder="Search">
-        <div class="query-count">
-          <p>{{filteredList.length}} / {{gridTotal}}</p>
-        </div>
-      </form>
-      <table class="table table-hover">
+      </div>
+      <div class="query-count">
+        <p>{{filteredList.length}} / {{gridTotal}}</p>
+      </div>
+    </form>
+    <div class="grid__table maxW_1024">
+      <table class="table table-hover table-responsive">
         <thead>
           <tr class="">
             <th v-for="key in columnKeys"
@@ -21,13 +24,13 @@
         </thead>
         <tbody>
           <tr class="" v-for="data in filteredList" :key="data.id.value">
-            <td scope="row"><p>{{data.name.first | capitalize}}</p> <p>{{data.name.last | capitalize}}</p></td>
-            <td>{{data.gender | capitalize}}</td>
-            <td>{{data.dob | date}}</td>
-            <td>{{data.location.city | capitalize}}</td>
-            <td>{{data.location.state | capitalize}}</td>
-            <td>{{data.phone}}</td>
-            <td>{{data.email}}</td>
+            <td scope="row"><p>{{data.name.first | capitalize }}</p> <p>{{data.name.last | capitalize }}</p></td>
+            <td>{{data.gender | capitalize }}</td>
+            <td>{{data.dob | date }}</td>
+            <td>{{data.location.city | capitalize }}</td>
+            <td>{{data.location.state | capitalize }}</td>
+            <td>{{data.phone }}</td>
+            <td>{{data.email }}</td>
           </tr>
         </tbody>
       </table>
@@ -47,11 +50,11 @@ export default {
   name: "Grid",
   data() {
     return {
-      columnKeys: ["name", "gender", "dob", "city", "state", "phone", "email"],
+      columnKeys: ["name", "gender", "DOB", "city", "state", "phone", "email"],
       colData: [],
       currentSort: "",
       currentSortDir: "asc",
-      searchQuery: "",
+      searchQuery: null,
       gridTotal: ""
     };
   },
@@ -88,10 +91,10 @@ export default {
     }
   },
   filters: {
-    capitalize: function(str) {
+    capitalize(str) {
       return capitalizeStr(str);
     },
-    date: function(str) {
+    date(str) {
       return filterDOB(str)[0];
     }
   },

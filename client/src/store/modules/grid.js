@@ -20,20 +20,14 @@ const actions = {
           const status = response.status;
           const data = response.data.results;
           const info = response.data.info;
-          console.log("response:", status);
-          console.log("data:", data);
-          console.log("info:", info);
-          // const status = j.data.status;
           if (status === 200) {
             const data = {
               results: response.data.results,
               info: response.data.info
             };
-            console.log("status === 200:", data);
             commit("SET_GRID_DATA", data);
             resolve(status);
           } else {
-            console.log("else:", j);
             commit("SET_ERRORS", j);
             reject(j);
           }

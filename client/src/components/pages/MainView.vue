@@ -1,16 +1,16 @@
 <template>
   <div class="mainView">
     <nav-bar/>
-    <the-grid/>
+    <router-view class="body"></router-view>
   </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
-import TheGrid from "../components/TheGrid.vue";
+
 export default {
   name: "MainView",
-  components: { NavBar, TheGrid }
+  components: { NavBar }
 };
 </script>
 
