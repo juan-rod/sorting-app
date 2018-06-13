@@ -5,7 +5,8 @@ a web application that allows users to sort, search, and filter a large list of 
 
 App contains a client and server set up. They aren't connected yet. 
 ### Prerequisites
-Need Node <https://nodejs.org/en/#download>
+Node <https://nodejs.org/en/#download>
+
 After installing Node, check if NPM is installed through the terminal
 ```
 npm --version
